@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary-50: 231 255 249;
+  --brand-primary-100: 186 252 236;
+  --brand-primary-200: 128 255 223;
+  --brand-primary-300: 65 248 202;
+  --brand-primary-400: 0 224 168;
+  --brand-primary-500: 0 200 150;
+  --brand-primary-600: 0 153 119;
+
+  --basic-grey-50: 247 248 249;
+  --basic-grey-100: 243 243 243;
+  --basic-grey-200: 230 230 230;
+  --basic-grey-300: 204 204 204;
+  --basic-grey-400: 179 179 179;
+  --basic-grey-500: 153 153 153;
+  --basic-grey-600: 128 128 128;
+  --basic-grey-700: 77 77 77;
+
+  --basic-white: 255 255 255;
+  --basic-black: 24 31 41;
+
+  --basic-red-100: 253 234 234;
+  --basic-red-200: 248 157 157;
+  --basic-red-300: 244 83 83;
+  --basic-red-400: 239 43 42;
+  --basic-red-500: 217 39 38;
+
+  --basic-blue-100: 234 244 255;
+  --basic-blue-200: 140 195 254;
+  --basic-blue-300: 56 151 253;
+  --basic-blue-400: 0 104 231;
+
+  --basic-yellow-50: 252 249 233;
+  --basic-yellow-100: 255 220 64;
+  --basic-pink-50: 255 239 246;
+  --basic-pink-100: 241 162 197;
+  --basic-orange-50: 255 235 226;
+  --basic-orange-100: 244 137 83;
+
+  /* 모바일 기기에서 상단 safe area inset */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+@layer base {
+  body {
+    @apply text-16 font-400 text-basic-black;
+  }
+
+  .list-disc li::marker {
+    font-size: 0.7em;
+  }
+}
