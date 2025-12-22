@@ -132,6 +132,11 @@ const config: Config = {
       24: '24px',
       full: '9999px',
     },
+    screens: {
+      desktop: '1280px',
+      tablet: '834px',
+      mobile: '375px',
+    },
     extend: {
       boxShadow: {
         bottomBar: '0 -4px 6px -1px rgba(0,0,0,0.1)',
