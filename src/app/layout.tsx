@@ -95,7 +95,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex flex-col items-center bg-basic-white">
-        {/* <Header /> */}
+        <Header />
         <main className="w-full max-w-1280">{children}</main>
       </body>
     </html>
