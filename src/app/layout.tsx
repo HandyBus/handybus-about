@@ -94,9 +94,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
       </head>
-      <body className="flex flex-col bg-basic-white">
+      <body className="flex flex-col items-center bg-basic-white">
         {/* <Header /> */}
-        <main className="mx-auto max-w-1280">{children}</main>
+        <main className="w-full max-w-1280">{children}</main>
       </body>
     </html>
   );

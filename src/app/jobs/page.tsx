@@ -27,7 +27,7 @@ const Page = () => {
   return (
     <section className="flex flex-col gap-64 tablet:gap-80 desktop:gap-120">
       {/* 상단 이미지 */}
-      <section className="relative overflow-hidden">
+      <section className="relative w-full">
         <figure className="relative h-[380px] w-full">
           <Image
             src={TopImage}
