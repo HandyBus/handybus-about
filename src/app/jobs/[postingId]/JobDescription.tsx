@@ -1,7 +1,6 @@
 'use client';
 
 import ReactMarkdown from 'react-markdown';
-import { MouseEvent } from 'react';
 
 interface JobDescriptionProps {
   description: string;
@@ -14,7 +13,7 @@ const JobDescription = ({ description }: JobDescriptionProps) => {
         components={{
           a: ({ href, ...props }) => {
             const url = href ?? '';
-            const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
+            const onClick = () => {
               if (!url) return;
               // If external link handling is needed in the future, add it here
               // event.preventDefault();

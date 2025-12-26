@@ -188,8 +188,8 @@ const Page = () => {
             팬덤 문화의 새로운 경험을 설계합니다.
           </h2>
           <p className="text-16 font-500 leading-[140%] text-basic-grey-700">
-            핸디버스는 단순한 '이동 수단'을 넘어, 팬덤 문화 전반을 아우르는
-            '경험 플랫폼'으로 진화하고 있습니다.
+            핸디버스는 단순한 &apos;이동 수단&apos;을 넘어, 팬덤 문화 전반을 아우르는
+            &apos;경험 플랫폼&apos;으로 진화하고 있습니다.
           </p>
           <p className="text-16 font-500 leading-[140%] text-basic-grey-700">
             콘서트 전문 셔틀 서비스로 시작하여, 팬들이 행사 장소로 이동하며

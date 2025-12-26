@@ -54,7 +54,7 @@ const Page = () => {
         </h2>
         <p className="break-keep text-20 font-500 leading-[140%] text-basic-grey-700">
           핸디버스는 셔틀을 필요로 하는 개개인의 목소리에서 시작되었습니다.
-          “팬덤이 좋아할 것인가?"를 가장 먼저 고민하며 팬들이 원하는 미래를 함께
+          &quot;팬덤이 좋아할 것인가?&quot;를 가장 먼저 고민하며 팬들이 원하는 미래를 함께
           만들어갑니다.
         </p>
       </section>

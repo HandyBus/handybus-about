@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: job.title,
       description: job.description.slice(0, 100),
     };
-  } catch (error) {
+  } catch {
     return {
       title: '채용 공고 상세',
       description: '핸디버스의 여정을 함께 할 동료를 찾습니다.',
