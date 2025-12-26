@@ -2,36 +2,17 @@ import Image from 'next/image';
 import TopImage from './images/jobs-top-image.png';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { recruitmentService } from '../services/recruitment.service';
-import { JobCategory, CareerType } from '../types/recruitment.type';
-import { getDDay, formatDate } from './utils';
+import { getJobPostings } from '../services/recruitment.service';
+import { getDDay, formatDate } from './jobs.utils';
+import { JOB_CATEGORY_LABEL, CAREER_TYPE_LABEL } from './jobs.const';
 
 export const metadata: Metadata = {
   title: '채용 공고',
   description: '핸디버스의 여정을 함께 할 동료를 찾습니다.',
 };
 
-const JOB_CATEGORY_LABEL: Record<JobCategory, string> = {
-  FRONTEND: '개발',
-  BACKEND: '개발',
-  MOBILE: '개발',
-  DATA: '개발',
-  DESIGN: '디자인',
-  PRODUCT: '기획',
-  MARKETING: '마케팅',
-  SALES: '영업',
-  HR: '인사',
-  ETC: '기타',
-};
-
-const CAREER_TYPE_LABEL: Record<CareerType, string> = {
-  NEW: '신입',
-  CAREER: '경력',
-  BOTH: '무관',
-};
-
 const Page = async () => {
-  const jobPostings = await recruitmentService.getJobPostings({
+  const jobPostings = await getJobPostings({
     isOpen: true,
     orderBy: 'createdAt',
     additionalOrderOptions: 'DESC',

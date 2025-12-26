@@ -1,5 +1,7 @@
 import z from 'zod';
 
+// NOTE: swagger에 스키마가 제대로 표기되지 않아 api 레포의 코드를 참고하여 작성하였습니다. 따라서 실제 스키마와 다를 수 있습니다.
+
 export const JobCategorySchema = z.enum([
   'FRONTEND',
   'BACKEND',
@@ -30,7 +32,7 @@ export type JobApplicationStatus = z.infer<typeof JobApplicationStatusSchema>;
 // NOTE: JobApplicationsEntity 엔터티는 서버의 DB/ORM 코드에 있습니다.
 // 아래는 타입 정의 등 클라이언트 TS에서 사용하기 위한 간소화 버전입니다.
 export const JobApplicationsEntitySchema = z.object({
-  id: z.number(),
+  id: z.string(),
   jobPostingId: z.string().nullable(),
   applicantId: z.string(),
   applicationType: JobApplicationTypeSchema,
@@ -38,7 +40,7 @@ export const JobApplicationsEntitySchema = z.object({
   resumeFile: z.string(),
   portfolioFile: z.string().nullable(),
   personalInfoConsent: z.boolean(),
-  agreedAt: z.string().nullable(), // string or Dayjs, adjust as needed in app
+  agreedAt: z.string().nullable(),
   status: JobApplicationStatusSchema,
   // 관계형 데이터: 필요시 더 추가 가능
   // 예: jobPosting?: JobPostingsEntity | null;
@@ -47,7 +49,7 @@ export const JobApplicationsEntitySchema = z.object({
 });
 
 export const JobPostingsEntitySchema = z.object({
-  id: z.number(),
+  id: z.string(),
   title: z.string(),
   jobCategory: JobCategorySchema,
   careerType: CareerTypeSchema,

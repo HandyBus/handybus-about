@@ -27,8 +27,8 @@ interface GetJobPostingsOptions {
   title?: string;
 }
 
-const getJobPostings = async (
-  options: GetJobPostingsOptions & PaginationOptions,
+export const getJobPostings = async (
+  options?: GetJobPostingsOptions & PaginationOptions,
 ) => {
   const searchParams = toSearchParams(options);
   const res = await instance.get(
@@ -40,8 +40,4 @@ const getJobPostings = async (
     },
   );
   return res.jobPostings;
-};
-
-export const recruitmentService = {
-  getJobPostings,
 };
