@@ -2,34 +2,41 @@ import Image from 'next/image';
 import TopImage from './images/jobs-top-image.png';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { recruitmentService } from '../services/recruitment.service';
+import { JobCategory, CareerType } from '../types/recruitment.type';
+import { getDDay, formatDate } from './utils';
 
 export const metadata: Metadata = {
   title: '채용 공고',
   description: '핸디버스의 여정을 함께 할 동료를 찾습니다.',
 };
 
-const JOB_POSITIONS = [
-  {
-    id: 1,
-    title: '소프트웨어 엔지니어',
-    position: '개발',
-    careerLevel: '신입',
-  },
-  {
-    id: 2,
-    title: '소프트웨어 엔지니어',
-    position: '개발',
-    careerLevel: '경력',
-  },
-  {
-    id: 3,
-    title: '콘텐츠 마케터',
-    position: '마케팅',
-    careerLevel: '경력',
-  },
-];
+const JOB_CATEGORY_LABEL: Record<JobCategory, string> = {
+  FRONTEND: '개발',
+  BACKEND: '개발',
+  MOBILE: '개발',
+  DATA: '개발',
+  DESIGN: '디자인',
+  PRODUCT: '기획',
+  MARKETING: '마케팅',
+  SALES: '영업',
+  HR: '인사',
+  ETC: '기타',
+};
 
-const Page = () => {
+const CAREER_TYPE_LABEL: Record<CareerType, string> = {
+  NEW: '신입',
+  CAREER: '경력',
+  BOTH: '무관',
+};
+
+const Page = async () => {
+  const jobPostings = await recruitmentService.getJobPostings({
+    isOpen: true,
+    orderBy: 'createdAt',
+    additionalOrderOptions: 'DESC',
+  });
+
   return (
     <section className="flex flex-col gap-64 tablet:gap-80 desktop:gap-120">
       {/* 상단 이미지 */}
@@ -52,34 +59,34 @@ const Page = () => {
       {/* 채용 공고 */}
       <section className="container-padding flex flex-col gap-32 tablet:mx-auto tablet:w-full tablet:max-w-[792px]">
         <h2 className="text-24 font-600 leading-[140%]">
-          {JOB_POSITIONS.length}개의 포지션이 열려있어요
+          {jobPostings.length}개의 포지션이 열려있어요
         </h2>
 
         <section>
-          {JOB_POSITIONS.map((job, index) => (
-            <>
-              <Link
-                key={job.id}
-                href={`/jobs/${job.id}`}
-                className="flex justify-between"
-              >
+          {jobPostings.map((job, index) => (
+            <div key={job.id}>
+              <Link href={`/jobs/${job.id}`} className="flex justify-between">
                 <div>
                   <h3 className="text-24 font-600 leading-[140%]">
                     {job.title}
                   </h3>
                   <p className="text-14 font-500 leading-[140%] text-basic-grey-700">
-                    {job.position} | {job.careerLevel}
+                    {JOB_CATEGORY_LABEL[job.jobCategory]} |{' '}
+                    {CAREER_TYPE_LABEL[job.careerType]}
                   </p>
                 </div>
                 <div className="text-right ">
-                  <p className="text-24 font-600 leading-[140%]">D-{'10'}</p>
+                  <p className="text-24 font-600 leading-[140%]">
+                    {getDDay(job.closeAt)}
+                  </p>
                   <p className="text-14 font-500 leading-[140%] text-basic-grey-700">
-                    2025.12.23 - 2026.01.06
+                    {formatDate(job.openAt)} -{' '}
+                    {job.closeAt ? formatDate(job.closeAt) : '상시 채용'}
                   </p>
                 </div>
               </Link>
-              {index !== JOB_POSITIONS.length - 1 && <Divider />}
-            </>
+              {index !== jobPostings.length - 1 && <Divider />}
+            </div>
           ))}
         </section>
       </section>
