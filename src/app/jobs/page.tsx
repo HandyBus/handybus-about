@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { getJobPostings } from '../services/recruitment.service';
 import { getDDay, formatDate } from './jobs.utils';
 import { JOB_CATEGORY_LABEL, CAREER_TYPE_LABEL } from './jobs.const';
+import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '채용 공고',
@@ -89,6 +90,8 @@ const Page = async () => {
           </button>
         </section>
       </section>
+
+      <Footer />
     </section>
   );
 };
