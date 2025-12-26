@@ -8,6 +8,12 @@ import Culture1ImageSmall from './images/2x-culture-card-small1.png';
 import Culture2ImageSmall from './images/2x-culture-card-small2.png';
 import Culture3ImageSmall from './images/2x-culture-card-small3.png';
 import Culture4ImageSmall from './images/2x-culture-card-small4.png';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '팀 문화',
+  description: '팬들의 설렘을 위해, 가장 치열하게 움직이는 동료들',
+};
 
 const CULTURE_IMAGES = [
   Culture1Image,

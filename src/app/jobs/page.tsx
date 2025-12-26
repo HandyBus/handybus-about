@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import TopImage from './images/jobs-top-image.png';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '채용 공고',
+  description: '핸디버스의 여정을 함께 할 동료를 찾습니다.',
+};
 
 const JOB_POSITIONS = [
   {

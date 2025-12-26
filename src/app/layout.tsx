@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    template: TITLE,
+    template: `%s | ${TITLE}`,
     default: TITLE,
   },
   description: DESCRIPTION,
