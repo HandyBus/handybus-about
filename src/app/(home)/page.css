@@ -1,8 +1,3 @@
-/* 컨테이너 패딩 */
-.container-padding {
-  @apply tablet:px-[30px] desktop:px-40 px-16;
-}
-
 /* 파트너 로고 컨테이너 - 반응형 크기 조정 */
 .partner-logo-container {
   width: var(--partner-width-mobile);

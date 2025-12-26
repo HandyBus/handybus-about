@@ -19,10 +19,17 @@ import PartnerDaquImage from './images/brand-daqu-village.png';
 import PartnerFstvlLifeImage from './images/brand-fstvl-life.png';
 import PartnerGoldLimusineImage from './images/brand-gold-limusine.png';
 import PartnerTheBusImage from './images/brand-the-bus.png';
+import PartnerSnapshootImage from './images/brand-snapshoot.png';
 import BottomImage from './images/bottom-image.png';
-import DownloadIcon from './icons/download.svg';
+import DownloadIcon from 'public/icons/download.svg';
 import { CSSProperties } from 'react';
 import './page.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '회사 소개',
+  description: '팬덤 문화의 새로운 경험을 설계합니다.',
+};
 
 const CARD_IMAGES: StaticImageData[] = [
   Card1Image,
@@ -92,14 +99,6 @@ const PARTNER_ITEM: PartnerItem[] = [
     },
   },
   {
-    image: PartnerKlookImage,
-    sizes: {
-      mobile: { width: 121, height: 67 },
-      tablet: { width: 160, height: 88 },
-      desktop: { width: 200, height: 111 },
-    },
-  },
-  {
     image: PartnerFstvlLifeImage,
     sizes: {
       mobile: { width: 120, height: 75 },
@@ -108,11 +107,19 @@ const PARTNER_ITEM: PartnerItem[] = [
     },
   },
   {
-    image: PartnerTheBusImage,
+    image: PartnerKlookImage,
     sizes: {
-      mobile: { width: 128, height: 26 },
-      tablet: { width: 156, height: 35 },
-      desktop: { width: 196, height: 44 },
+      mobile: { width: 121, height: 67 },
+      tablet: { width: 160, height: 88 },
+      desktop: { width: 200, height: 111 },
+    },
+  },
+  {
+    image: PartnerGoldLimusineImage,
+    sizes: {
+      mobile: { width: 106, height: 106 },
+      tablet: { width: 140, height: 140 },
+      desktop: { width: 175, height: 175 },
     },
   },
   {
@@ -124,6 +131,14 @@ const PARTNER_ITEM: PartnerItem[] = [
     },
   },
   {
+    image: PartnerTheBusImage,
+    sizes: {
+      mobile: { width: 128, height: 26 },
+      tablet: { width: 156, height: 35 },
+      desktop: { width: 196, height: 44 },
+    },
+  },
+  {
     image: PartnerKoreaUnivImage,
     sizes: {
       mobile: { width: 69, height: 51 },
@@ -132,21 +147,21 @@ const PARTNER_ITEM: PartnerItem[] = [
     },
   },
   {
-    image: PartnerGoldLimusineImage,
+    image: PartnerSnapshootImage,
     sizes: {
-      mobile: { width: 106, height: 106 },
-      tablet: { width: 140, height: 140 },
-      desktop: { width: 175, height: 175 },
+      mobile: { width: 63, height: 63 },
+      tablet: { width: 78, height: 78 },
+      desktop: { width: 102, height: 102 },
     },
   },
 ];
 
 const Page = () => {
   return (
-    <section className="tablet:gap-80 desktop:gap-120 flex flex-col gap-64">
+    <section className="flex flex-col gap-64 tablet:gap-80 desktop:gap-120">
       {/* 상단 이미지 */}
       <section className="relative overflow-hidden">
-        <figure className="relative h-[559px] w-full">
+        <figure className="relative h-[480px] w-full">
           <Image
             src={TopImage}
             alt="상단 이미지"
@@ -154,20 +169,20 @@ const Page = () => {
             className="object-cover"
           />
         </figure>
-        <div className="absolute bottom-[147px] left-40 flex flex-col gap-16 text-basic-white">
-          <h1 className="tablet:text-[38px] text-[34px] font-600 leading-[140%]">
+        <div className="absolute bottom-[151px] left-40 flex flex-col gap-16 text-basic-white tablet:bottom-[137px]">
+          <h1 className="text-[34px] font-600 leading-[140%] tablet:text-[38px]">
             팬들이 원하는 순간,
             <br />
             어디서든 함께할 수 있도록
           </h1>
-          <p className="tablet:text-20 text-18 font-500 leading-[140%]">
+          <p className="text-18 font-500 leading-[140%] tablet:text-20">
             함께 만드는 팬덤의 여정, 핸디버스가 동행합니다.
           </p>
         </div>
       </section>
 
       {/* 소개 */}
-      <section className="container-padding tablet:flex-row tablet:gap-24 flex flex-col gap-16">
+      <section className="container-padding flex flex-col gap-16 tablet:flex-row tablet:gap-24">
         <section className="flex flex-col gap-16">
           <h2 className="text-24 font-600 leading-[140%]">
             팬덤 문화의 새로운 경험을 설계합니다.
@@ -195,7 +210,7 @@ const Page = () => {
       </section>
 
       {/* 그림 */}
-      <section className="container-padding desktop:flex desktop:flex-row tablet:grid tablet:grid-cols-2 flex flex-col gap-24">
+      <section className="container-padding flex flex-col gap-24 tablet:grid tablet:grid-cols-2 desktop:flex desktop:flex-row">
         {CARD_IMAGES.map((card, index) => (
           <figure key={index} className="relative aspect-[282/376] w-full">
             <Image
@@ -209,13 +224,13 @@ const Page = () => {
       </section>
 
       {/* 비전 */}
-      <section className="container-padding tablet:flex tablet:flex-row flex flex-col gap-16">
-        <h2 className="tablet:leading-[160%] tablet:min-w-[385px] whitespace-nowrap text-24 font-600 leading-[140%]">
+      <section className="container-padding flex flex-col gap-16 tablet:flex tablet:flex-row">
+        <h2 className="whitespace-nowrap text-24 font-600 leading-[140%] tablet:min-w-[385px] tablet:leading-[160%]">
           Connecting Passion,
           <br />
           Expanding Experience
         </h2>
-        <p className="tablet:leading-[160%] tablet:text-20 text-16 font-500 leading-[140%] text-basic-grey-700">
+        <p className="text-16 font-500 leading-[140%] text-basic-grey-700 tablet:text-20 tablet:leading-[160%]">
           팬의 열정이 닿는 곳 어디든, 이동의 장벽을 허물고 연결의 경험을
           만들어가고 있습니다. 핸디버스는 단순한 이동수단이 아닌, 팬덤의 여정을
           함께하는 동행자가 되고자 합니다.
@@ -223,8 +238,8 @@ const Page = () => {
       </section>
 
       {/* 성과 */}
-      <section className="container-padding desktop:flex-row desktop:gap-24 tablet:flex-col flex flex-col gap-24">
-        <section className="tablet:order-1 tablet:grid tablet:grid-cols-2 desktop:order-1 desktop:min-w-[690px] order-2 flex flex-col gap-24">
+      <section className="container-padding flex flex-col gap-24 tablet:flex-col desktop:flex-row desktop:gap-24">
+        <section className="order-2 flex flex-col gap-24 tablet:order-1 tablet:grid tablet:grid-cols-2 desktop:order-1 desktop:min-w-[690px]">
           {METRICS_IMAGES.map((metric, index) => (
             <figure key={index} className="relative aspect-[333/203] w-full">
               <Image
@@ -236,11 +251,11 @@ const Page = () => {
             </figure>
           ))}
         </section>
-        <section className="tablet:order-2 desktop:order-2 order-1 flex flex-col gap-16">
-          <h2 className="tablet:leading-[140%] text-24 font-600 leading-[160%]">
+        <section className="order-1 flex flex-col gap-16 tablet:order-2 desktop:order-2">
+          <h2 className="text-24 font-600 leading-[160%] tablet:leading-[140%]">
             팬덤 이동 시장에서 빠르게 성장하고 있습니다
           </h2>
-          <p className="tablet:text-16 text-20 font-500 leading-[140%] text-basic-grey-700">
+          <p className="text-20 font-500 leading-[140%] text-basic-grey-700 tablet:text-16">
             핸디버스는 지난 기간동안 축적된 수만 건의 팬덤 이동 데이터를
             기반으로 국내 팬덤 셔틀 시장을 선도하고 있습니다. 저희는 단순 예약
             및 운행을 넘어, 팬들의 거주지 분포, 행사 성격 등을 다각도로 분석하여
@@ -254,7 +269,7 @@ const Page = () => {
         <h2 className="text-center text-24 font-600 leading-[140%]">
           핸디버스는 다양한 방면으로 경험을 확장해 나가고 있습니다
         </h2>
-        <section className="desktop:flex-row flex flex-col gap-24">
+        <section className="flex flex-col gap-24 desktop:flex-row">
           {SERVICE_ITEM.map((item, index) => (
             <section key={index} className="desktop:w-full">
               <figure className="relative aspect-[333/203] w-full">
@@ -270,11 +285,11 @@ const Page = () => {
                   <div className="flex h-[22px] w-[22px] items-center justify-center rounded-4 bg-basic-grey-200">
                     {item.order}
                   </div>
-                  <h3 className="desktop:text-20 tablet:text-[23px] text-20 font-600 leading-[140%]">
+                  <h3 className="text-20 font-600 leading-[140%] tablet:text-[23px] desktop:text-20">
                     {item.title}
                   </h3>
                 </div>
-                <ul className="tablet:text-20 desktop:text-16 flex list-disc flex-col pl-16 text-16 font-500 leading-[160%] text-basic-grey-700">
+                <ul className="flex list-disc flex-col pl-16 text-16 font-500 leading-[160%] text-basic-grey-700 tablet:text-20 desktop:text-16">
                   <li>{item.description1}</li>
                   <li>{item.description2}</li>
                   <li>{item.description3}</li>
@@ -287,7 +302,7 @@ const Page = () => {
       </section>
 
       {/* 협력기업 */}
-      <section className="container-padding tablet:gap-40 flex flex-col gap-24">
+      <section className="container-padding flex flex-col gap-24 tablet:gap-40">
         <section className="flex flex-col gap-16 text-center">
           <h2 className="text-24 font-600 leading-[140%]">
             다채로운 팬덤 여정을 함께 만들어갑니다
@@ -331,8 +346,8 @@ const Page = () => {
       </section>
 
       {/* 마무리 이미지 */}
-      <section className="desktop:mb-120 desktop:h-[300px] tablet:mb-80 relative mb-64 overflow-hidden ">
-        <figure className="desktop:block relative hidden h-[300px] w-full">
+      <section className="relative mb-64 overflow-hidden tablet:mb-80 desktop:mb-120 desktop:h-[300px] ">
+        <figure className="relative h-[300px] w-full">
           <Image
             src={BottomImage}
             alt="하단 이미지"
@@ -340,17 +355,14 @@ const Page = () => {
             className="object-cover"
           />
         </figure>
-        <section className="desktop:gap-24 tablet:pt-[91px] tablet:pb-[90px] desktop:bg-transparent desktop:absolute desktop:inset-0 desktop:py-0 flex flex-col items-center justify-center gap-16 bg-basic-grey-50 pb-[66.5px] pt-[67.5px]">
-          <h2 className="desktop:text-basic-white tablet:text-[38px] text-[36px] font-600 leading-[140%]">
+        <section className="absolute inset-0 flex flex-col items-center justify-center gap-16 pb-[66.5px] pt-[67.5px] tablet:pb-[90px] tablet:pt-[91px] desktop:gap-24 desktop:bg-transparent desktop:py-0">
+          <h2 className="text-[36px] font-600 leading-[140%] text-basic-white tablet:text-[38px]">
             팬덤 이동의 시작과 끝, 핸디버스
           </h2>
           <div className="flex gap-16">
             <button className="flex items-center justify-center gap-[2px] rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white">
               회사소개서
               <DownloadIcon />
-            </button>
-            <button className="desktop:flex hidden w-[126px] items-center justify-center gap-[2px] rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white">
-              협업 문의
             </button>
           </div>
         </section>
