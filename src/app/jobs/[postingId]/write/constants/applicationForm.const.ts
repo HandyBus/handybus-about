@@ -1,0 +1,35 @@
+import z from 'zod';
+
+export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+export const ACCEPTED_FILE_TYPES = ['application/pdf'];
+
+export const applicationSchema = z
+  .object({
+    name: z.string().min(1, '이름을 입력해주세요.'),
+    contact: z.string().min(1, '연락처를 입력해주세요.'),
+    email: z
+      .email('올바른 이메일 형식이 아닙니다.')
+      .min(1, '이메일을 입력해주세요.'),
+    careerType: z.enum(['NEW', 'CAREER'], { message: '경력을 선택해주세요.' }),
+    careerYears: z.number().optional(),
+    resumeFile: z
+      .any()
+      .refine((file) => file, '이력서 및 경력기술서를 첨부해주세요.'),
+    portfolioFile: z.any().optional(),
+    agreeMandatory1: z.boolean().refine((value) => value, {
+      message: '필수 항목에 동의해주세요.',
+    }),
+    agreeOptional1: z.boolean().optional(),
+    agreeOptional2: z.boolean().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.careerType === 'CAREER' && data.careerYears == null) {
+      ctx.addIssue({
+        code: 'custom',
+        message: '경력 년수를 입력해주세요.',
+        path: ['careerYears'],
+      });
+    }
+  });
+
+export type ApplicationFormData = z.infer<typeof applicationSchema>;
