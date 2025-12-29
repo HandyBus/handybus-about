@@ -17,7 +17,7 @@ import {
   ApplicationFormData,
   applicationSchema,
   MAX_FILE_SIZE,
-} from '../types/applicationForm.type';
+} from './types/applicationForm.type';
 import { createJobApplication } from '@/app/services/recruitment.service';
 import { getFileUrl } from '@/app/services/common.service';
 import dayjs from 'dayjs';
@@ -362,6 +362,7 @@ export const ApplicationForm = ({
           className="w-full"
           disabled={isLoading}
           isLoading={isLoading}
+          type="button"
         >
           지원하기
         </Button>
@@ -373,6 +374,7 @@ export const ApplicationForm = ({
           className="hidden desktop:block"
           disabled={isLoading}
           isLoading={isLoading}
+          type="button"
         >
           지원하기
         </Button>

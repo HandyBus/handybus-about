@@ -17,7 +17,7 @@ import {
   ApplicationFormData,
   applicationSchema,
   MAX_FILE_SIZE,
-} from '../types/applicationForm.type';
+} from './types/applicationForm.type';
 import { createJobApplication } from '@/app/services/recruitment.service';
 import { getFileUrl } from '@/app/services/common.service';
 import dayjs from 'dayjs';

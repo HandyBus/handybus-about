@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { getJobPostings } from '@/app/services/recruitment.service';
 import { CAREER_TYPE_LABEL, JOB_CATEGORY_LABEL } from '@/app/jobs/jobs.const';
 import JobDescription from './components/JobDescription';
-import Footer from '@/components/footer/Footer';
 
 interface Props {
   params: { postingId: string };
@@ -73,8 +72,6 @@ const Page = async ({ params }: Props) => {
           </Link>
         </section>
       </section>
-
-      <Footer />
 
       <div className="container-padding fixed bottom-0 left-0 right-0 z-10 bg-basic-white pb-20 desktop:hidden">
         <Link

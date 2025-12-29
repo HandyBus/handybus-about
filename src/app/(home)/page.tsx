@@ -25,7 +25,6 @@ import DownloadIcon from 'public/icons/download.svg';
 import { CSSProperties } from 'react';
 import './page.css';
 import { Metadata } from 'next';
-import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '회사 소개',
@@ -368,8 +367,6 @@ const Page = () => {
           </div>
         </section>
       </section>
-
-      <Footer />
     </section>
   );
 };

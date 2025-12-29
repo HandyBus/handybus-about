@@ -5,7 +5,6 @@ import { Metadata } from 'next';
 import { getJobPostings } from '../services/recruitment.service';
 import { getDDay, formatDate } from './jobs.utils';
 import { JOB_CATEGORY_LABEL, CAREER_TYPE_LABEL } from './jobs.const';
-import Footer from '@/components/footer/Footer';
 import { JobPostingResponseModel } from '../types/recruitment.type';
 
 export const metadata: Metadata = {
@@ -93,8 +92,6 @@ const Page = async () => {
           </Link>
         </section>
       </section>
-
-      <Footer />
     </section>
   );
 };

@@ -1,6 +1,8 @@
 import z from 'zod';
 import { instance } from './config';
 import { CustomError } from './custom-error';
+import { ContactFormData } from '../contact/components/types/contactForm.type';
+import { ContactSchema } from '../types/common.type';
 
 type KeyType = 'concerts' | 'users/profiles' | 'reviews' | 'events' | 'resumes';
 type ExtensionType = 'pdf';
@@ -48,4 +50,13 @@ export const getFileUrl = async (
     console.error(error);
     throw new CustomError(500, '파일 URL 가져오기 실패');
   }
+};
+
+export const createContact = async (data: ContactFormData) => {
+  const res = await instance.post('/v1/core/contacts', data, {
+    shape: {
+      contact: ContactSchema,
+    },
+  });
+  return res.contact;
 };

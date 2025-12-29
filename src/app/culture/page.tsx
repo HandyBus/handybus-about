@@ -9,7 +9,6 @@ import Culture2ImageSmall from './images/2x-culture-card-small2.png';
 import Culture3ImageSmall from './images/2x-culture-card-small3.png';
 import Culture4ImageSmall from './images/2x-culture-card-small4.png';
 import { Metadata } from 'next';
-import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '팀 문화',
@@ -136,8 +135,6 @@ const Page = () => {
           </div>
         </section>
       </section>
-
-      <Footer />
     </section>
   );
 };

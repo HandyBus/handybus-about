@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="flex w-full flex-col gap-8 px-16 py-[28px]">
+    <footer className="flex w-full max-w-1280 flex-col gap-8 px-16 py-[28px]">
       <div className="flex justify-between">
         <LogoIcon />
         <div className="flex gap-16">
