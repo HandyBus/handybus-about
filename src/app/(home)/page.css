@@ -1,0 +1,19 @@
+/* 파트너 로고 컨테이너 - 반응형 크기 조정 */
+.partner-logo-container {
+  width: var(--partner-width-mobile);
+  height: var(--partner-height-mobile);
+}
+
+@media (min-width: 834px) {
+  .partner-logo-container {
+    width: var(--partner-width-tablet);
+    height: var(--partner-height-tablet);
+  }
+}
+
+@media (min-width: 1280px) {
+  .partner-logo-container {
+    width: var(--partner-width-desktop);
+    height: var(--partner-height-desktop);
+  }
+}
