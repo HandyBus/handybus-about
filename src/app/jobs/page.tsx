@@ -6,6 +6,7 @@ import { getJobPostings } from '../services/recruitment.service';
 import { getDDay, formatDate } from './jobs.utils';
 import { JOB_CATEGORY_LABEL, CAREER_TYPE_LABEL } from './jobs.const';
 import Footer from '@/components/footer/Footer';
+import { JobPostingResponseModel } from '../types/recruitment.type';
 
 export const metadata: Metadata = {
   title: '채용 공고',
@@ -41,11 +42,11 @@ const Page = async () => {
       {/* 채용 공고 */}
       <section className="container-padding flex flex-col gap-32 tablet:mx-auto tablet:w-full tablet:max-w-[792px]">
         <h2 className="text-24 font-600 leading-[140%]">
-          {jobPostings.length}개의 포지션이 열려있어요
+          {jobPostings?.length}개의 포지션이 열려있어요
         </h2>
 
         <section>
-          {jobPostings.map((job, index) => (
+          {jobPostings?.map((job: JobPostingResponseModel, index) => (
             <div key={job.id}>
               <Link href={`/jobs/${job.id}`} className="flex justify-between">
                 <div>
@@ -62,8 +63,7 @@ const Page = async () => {
                     {getDDay(job.closeAt)}
                   </p>
                   <p className="text-14 font-500 leading-[140%] text-basic-grey-700">
-                    {formatDate(job.openAt)} -{' '}
-                    {job.closeAt ? formatDate(job.closeAt) : '상시 채용'}
+                    {job.closeAt ? `~ ${formatDate(job.closeAt)}` : '상시 채용'}
                   </p>
                 </div>
               </Link>

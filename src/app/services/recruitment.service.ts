@@ -2,7 +2,7 @@ import z from 'zod';
 import {
   CareerType,
   JobCategory,
-  JobPostingsEntitySchema,
+  JobPostingResponseModelSchema,
 } from '../types/recruitment.type';
 import { instance } from './config';
 import { toSearchParams } from '@/utils/searchParams.util';
@@ -35,7 +35,7 @@ export const getJobPostings = async (
     `/v1/recruitment/job-postings?${searchParams.toString()}`,
     {
       shape: {
-        jobPostings: z.array(JobPostingsEntitySchema),
+        jobPostings: z.array(JobPostingResponseModelSchema),
       },
     },
   );

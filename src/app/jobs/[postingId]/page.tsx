@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getJobPostings } from '@/app/services/recruitment.service';
 import { CAREER_TYPE_LABEL, JOB_CATEGORY_LABEL } from '@/app/jobs/jobs.const';
-import JobDescription from './JobDescription';
+import JobDescription from './components/JobDescription';
 import Footer from '@/components/footer/Footer';
 
 interface Props {
