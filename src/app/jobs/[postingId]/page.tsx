@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getJobPostings } from '@/app/services/recruitment.service';
 import { CAREER_TYPE_LABEL, JOB_CATEGORY_LABEL } from '@/app/jobs/jobs.const';
 import JobDescription from './components/JobDescription';
+import Footer from '@/components/footer/Footer';
 
 interface Props {
   params: { postingId: string };
@@ -73,13 +74,17 @@ const Page = async ({ params }: Props) => {
         </section>
       </section>
 
-      <div className="container-padding fixed bottom-0 left-0 right-0 z-10 bg-basic-white pb-20 desktop:hidden">
+      <div className="container-padding fixed bottom-0 left-0 right-0 z-10 bg-basic-white pb-24 pt-8 desktop:hidden">
         <Link
           href={`/jobs/${job.id}/write`}
           className="block w-full rounded-8 bg-brand-primary-400 px-16 py-12 text-center text-16 font-600 leading-[160%] text-basic-white"
         >
           지원하기
         </Link>
+      </div>
+
+      <div className="hidden desktop:block">
+        <Footer />
       </div>
     </>
   );

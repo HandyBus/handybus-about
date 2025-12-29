@@ -124,22 +124,21 @@ const ContactForm = () => {
             />
           </div>
 
-          <div className="hidden tablet:block">
-            <Button
-              type="submit"
-              disabled={isLoading}
-              isLoading={isLoading}
-              onClick={handleSubmit}
-            >
-              전송하기
-            </Button>
-          </div>
+          <Button
+            type="button"
+            className="hidden tablet:flex"
+            disabled={isLoading}
+            isLoading={isLoading}
+            onClick={handleSubmit}
+          >
+            전송하기
+          </Button>
         </section>
       </section>
 
-      <div className="sticky bottom-0 z-10 border-t border-basic-grey-200 bg-basic-white p-16 tablet:hidden">
+      <div className="sticky bottom-0 z-10 border-basic-grey-200 bg-basic-white px-16 pb-24 pt-8 tablet:hidden">
         <Button
-          type="submit"
+          type="button"
           variant="full"
           disabled={isLoading}
           isLoading={isLoading}

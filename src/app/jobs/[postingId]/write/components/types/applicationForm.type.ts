@@ -22,23 +22,10 @@ export const applicationSchema = z
       .any()
       .refine((file) => file, '이력서 및 경력기술서를 첨부해주세요.'),
     portfolioFile: z.any().optional(),
-    agreeMandatory1: z.boolean().refine((value) => value, {
+    personalInfoConsent: z.boolean().refine((value) => value, {
       message: '필수 항목에 동의해주세요.',
     }),
-    agreedAtMandatory: z
-      .string()
-      .optional()
-      .describe('필수 항목 동의 일시 (ISO8601)'),
-    agreeOptional1: z.boolean().optional(),
-    agreedAtOptional1: z
-      .string()
-      .optional()
-      .describe('선택 항목 1 동의 일시 (ISO8601)'),
-    agreeOptional2: z.boolean().optional(),
-    agreedAtOptional2: z
-      .string()
-      .optional()
-      .describe('선택 항목 2 동의 일시 (ISO8601)'),
+    agreedAt: z.string().optional().describe('동의 일시 (ISO8601)'),
   })
   .superRefine((data, ctx) => {
     if (data.careerType === 'CAREER' && data.careerYears == null) {

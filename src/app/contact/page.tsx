@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import ContactForm from './components/ContactForm';
+import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '협업 문의',
@@ -7,7 +8,14 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
-  return <ContactForm />;
+  return (
+    <>
+      <ContactForm />
+      <div className="hidden tablet:block">
+        <Footer />
+      </div>
+    </>
+  );
 };
 
 export default Page;

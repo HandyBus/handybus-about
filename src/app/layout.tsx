@@ -98,7 +98,6 @@ export default function RootLayout({
       <body className="flex flex-col items-center bg-basic-white">
         <Header />
         <main className="w-full max-w-1280">{children}</main>
-        <Footer />
       </body>
     </html>
   );

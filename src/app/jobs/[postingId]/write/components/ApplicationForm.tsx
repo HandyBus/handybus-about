@@ -7,11 +7,7 @@ import { AgreementItem } from '@/components/agreement/AgreementItem';
 import { RadioOption } from '@/components/radio/RadioOption';
 import { FileInputField } from '@/components/file/FileInputField';
 import { Button } from '@/components/button/Button';
-import {
-  MANDATORY_AGREEMENT_TERMS,
-  OPTIONAL_AGREEMENT_TERMS_1,
-  OPTIONAL_AGREEMENT_TERMS_2,
-} from '../../../../../constants/agreementTerm.const';
+import { MANDATORY_AGREEMENT_TERMS } from '@/constants/agreementTerm.const';
 import {
   ACCEPTED_FILE_TYPES,
   ApplicationFormData,
@@ -36,10 +32,7 @@ export const ApplicationForm = ({
     name: '',
     contact: '',
     email: '',
-    careerType: 'NEW',
-    agreeMandatory1: false,
-    agreeOptional1: false,
-    agreeOptional2: false,
+    personalInfoConsent: false,
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -130,9 +123,9 @@ export const ApplicationForm = ({
           applicationType: 'JOB',
           customJobTitle: null,
           resumeFile: resumeFileUrl,
-          portfolioFile: portfolioFileUrl,
-          personalInfoConsent: data.agreeMandatory1,
-          agreedAt: dayjs().toISOString(),
+          portfolioFile: portfolioFileUrl ?? null,
+          personalInfoConsent: data.personalInfoConsent,
+          agreedAt: data.agreedAt,
         });
         router.replace(`/jobs/${postingId}/success`);
       } catch (error) {
@@ -151,24 +144,6 @@ export const ApplicationForm = ({
       careerYears: type === 'NEW' ? undefined : prev.careerYears,
     }));
   };
-
-  const handleAllAgree = () => {
-    const allChecked =
-      formData.agreeMandatory1 &&
-      formData.agreeOptional1 &&
-      formData.agreeOptional2;
-    setFormData((prev) => ({
-      ...prev,
-      agreeMandatory1: !allChecked,
-      agreeOptional1: !allChecked,
-      agreeOptional2: !allChecked,
-    }));
-  };
-
-  const isAllAgreed =
-    formData.agreeMandatory1 &&
-    formData.agreeOptional1 &&
-    formData.agreeOptional2;
 
   return (
     <div className="flex flex-col gap-32 tablet:gap-40 desktop:gap-40">
@@ -304,77 +279,51 @@ export const ApplicationForm = ({
       <section>
         <section className="flex flex-col gap-12 rounded-8 bg-basic-grey-50 p-12">
           <AgreementItem
-            label="전체 동의"
-            checked={!!isAllAgreed}
-            onClick={handleAllAgree}
+            label="[필수] 개인정보 필수 항목 수집 및 이용 동의"
+            checked={!!formData.personalInfoConsent}
+            onClick={() => {
+              const newStateOfPersonalInfoConsent =
+                !formData.personalInfoConsent;
+              setFormData({
+                ...formData,
+                personalInfoConsent: newStateOfPersonalInfoConsent,
+                agreedAt:
+                  newStateOfPersonalInfoConsent === true
+                    ? dayjs().toISOString()
+                    : undefined,
+              });
+            }}
+            terms={MANDATORY_AGREEMENT_TERMS}
           />
-          <div className="h-[1px] w-full bg-basic-grey-200" />
-          <div className="flex flex-col gap-8">
-            <AgreementItem
-              label="[필수] 개인정보 필수 항목 수집 및 이용 동의"
-              checked={!!formData.agreeMandatory1}
-              onClick={() =>
-                setFormData({
-                  ...formData,
-                  agreeMandatory1: !formData.agreeMandatory1,
-                })
-              }
-              terms={MANDATORY_AGREEMENT_TERMS}
-            />
-            <AgreementItem
-              label="[선택] 개인정보 선택 항목 수집 및 이용 동의"
-              checked={!!formData.agreeOptional1}
-              onClick={() =>
-                setFormData({
-                  ...formData,
-                  agreeOptional1: !formData.agreeOptional1,
-                })
-              }
-              terms={OPTIONAL_AGREEMENT_TERMS_1}
-            />
-            <AgreementItem
-              label="[선택] 개인정보 제3자 이용 제공 동의"
-              checked={!!formData.agreeOptional2}
-              onClick={() =>
-                setFormData({
-                  ...formData,
-                  agreeOptional2: !formData.agreeOptional2,
-                })
-              }
-              terms={OPTIONAL_AGREEMENT_TERMS_2}
-            />
-          </div>
         </section>
-        {errors.agreeMandatory1 && (
+        {errors.personalInfoConsent && (
           <p className="mt-12 text-12 font-500 text-basic-red-400">
-            {errors.agreeMandatory1}
+            {errors.personalInfoConsent}
           </p>
         )}
       </section>
 
-      <div className="container-padding fixed bottom-0 left-0 right-0 z-10 bg-basic-white pb-20 desktop:hidden">
+      <div className="container-padding fixed bottom-0 left-0 right-0 z-10 bg-basic-white pb-24 pt-8 desktop:hidden">
         <Button
           onClick={handleSubmit}
-          className="w-full"
           disabled={isLoading}
           isLoading={isLoading}
           type="button"
+          variant="full"
         >
           지원하기
         </Button>
       </div>
 
-      <div>
-        <Button
-          onClick={handleSubmit}
-          className="hidden desktop:block"
-          disabled={isLoading}
-          isLoading={isLoading}
-          type="button"
-        >
-          지원하기
-        </Button>
-      </div>
+      <Button
+        onClick={handleSubmit}
+        className="hidden desktop:flex"
+        disabled={isLoading}
+        isLoading={isLoading}
+        type="button"
+      >
+        지원하기
+      </Button>
 
       {/* Spacer for fixed button */}
       <div className="h-[80px] desktop:hidden" />

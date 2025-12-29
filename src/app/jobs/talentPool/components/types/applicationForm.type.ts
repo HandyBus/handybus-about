@@ -22,12 +22,10 @@ export const applicationSchema = z.object({
   portfolioFile: z.any().optional(),
   wantsCoffeeChat: z.boolean().optional(),
   messageToTeam: z.string().optional(),
-  agreedAt: z.string().optional(),
-  agreeMandatory1: z.boolean().refine((value) => value, {
+  personalInfoConsent: z.boolean().refine((value) => value, {
     message: '필수 항목에 동의해주세요.',
   }),
-  agreeOptional1: z.boolean().optional(),
-  agreeOptional2: z.boolean().optional(),
+  agreedAt: z.string().optional(),
 });
 
 export type ApplicationFormData = z.infer<typeof applicationSchema>;

@@ -25,6 +25,7 @@ import DownloadIcon from 'public/icons/download.svg';
 import { CSSProperties } from 'react';
 import './page.css';
 import { Metadata } from 'next';
+import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '회사 소개',
@@ -169,7 +170,7 @@ const Page = () => {
             className="object-cover"
           />
         </figure>
-        <div className="absolute bottom-[151px] left-40 flex flex-col gap-16 text-basic-white tablet:bottom-[137px]">
+        <div className="absolute bottom-[151px] left-[18px] flex flex-col gap-16 text-basic-white tablet:bottom-[137px] tablet:left-[30px] desktop:left-40">
           <h1 className="text-[34px] font-600 leading-[140%] tablet:text-[38px]">
             팬들이 원하는 순간,
             <br />
@@ -252,7 +253,7 @@ const Page = () => {
           ))}
         </section>
         <section className="order-1 flex flex-col gap-16 tablet:order-2 desktop:order-2">
-          <h2 className="text-24 font-600 leading-[160%] tablet:leading-[140%]">
+          <h2 className="break-keep text-24 font-600 leading-[160%] tablet:leading-[140%]">
             팬덤 이동 시장에서 빠르게 성장하고 있습니다
           </h2>
           <p className="text-20 font-500 leading-[140%] text-basic-grey-700 tablet:text-16">
@@ -367,6 +368,8 @@ const Page = () => {
           </div>
         </section>
       </section>
+
+      <Footer />
     </section>
   );
 };
