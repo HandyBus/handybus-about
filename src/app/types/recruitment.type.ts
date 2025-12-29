@@ -52,7 +52,7 @@ export const CreateJobApplicationRequestSchema = z.object({
   applicantName: z.string().describe("지원자 이름"),
   applicantPhoneNumber: z.string().describe("지원자 전화번호"),
   applicantEmail: z.string().describe("지원자 이메일"),
-  applicantCareerYears: z.number().describe("지원자 경력 연수"),
+  applicantCareerYears: z.number().nullable().describe("지원자 경력 연수"),
   applicationType: z.enum(['JOB', 'TALENT_POOL']).describe("지원 유형"),
   customJobTitle: z.string().nullable().describe("커스텀 직무명 (TALENT_POOL 타입일 경우 필수)"),
   resumeFile: z.string().describe("이력서 파일 URL"),

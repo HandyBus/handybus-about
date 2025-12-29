@@ -85,9 +85,12 @@ const Page = async () => {
           </p>
         </section>
         <section className="flex justify-center">
-          <button className="rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white">
+          <Link
+            href="/jobs/talentPool"
+            className="rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white"
+          >
             등록하기
-          </button>
+          </Link>
         </section>
       </section>
 

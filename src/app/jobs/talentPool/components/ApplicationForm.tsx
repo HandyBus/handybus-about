@@ -11,7 +11,7 @@ import {
   MANDATORY_AGREEMENT_TERMS,
   OPTIONAL_AGREEMENT_TERMS_1,
   OPTIONAL_AGREEMENT_TERMS_2,
-} from '../../../../../constants/agreementTerm.const';
+} from '@/constants/agreementTerm.const';
 import {
   ACCEPTED_FILE_TYPES,
   ApplicationFormData,
@@ -22,21 +22,13 @@ import { createJobApplication } from '@/app/services/recruitment.service';
 import { getFileUrl } from '@/app/services/common.service';
 import dayjs from 'dayjs';
 
-interface ApplicationFormProps {
-  jobTitle: string;
-  postingId: string;
-}
-
-export const ApplicationForm = ({
-  jobTitle,
-  postingId,
-}: ApplicationFormProps) => {
+export const ApplicationForm = () => {
   const router = useRouter();
   const [formData, setFormData] = useState<Partial<ApplicationFormData>>({
     name: '',
     contact: '',
     email: '',
-    careerType: 'NEW',
+    jobTitle: '',
     agreeMandatory1: false,
     agreeOptional1: false,
     agreeOptional2: false,
@@ -120,25 +112,22 @@ export const ApplicationForm = ({
         }
 
         await createJobApplication({
-          jobPostingId: postingId,
+          jobPostingId: null,
           applicantName: formData.name!,
           applicantPhoneNumber: formData.contact!,
           applicantEmail: formData.email!,
-          applicantCareerYears:
-            formData.careerType === 'CAREER'
-              ? (formData.careerYears ?? null)
-              : 0,
-          applicationType: 'JOB',
-          customJobTitle: null,
+          applicantCareerYears: null,
+          applicationType: 'TALENT_POOL',
+          customJobTitle: formData.jobTitle!,
           resumeFile: resumeFileUrl,
           portfolioFile: portfolioFileUrl,
           personalInfoConsent: formData.agreeMandatory1!,
           agreedAt: dayjs().toISOString(),
-          wantsCoffeeChat: null,
-          messageToTeam: null,
+          wantsCoffeeChat: formData.wantsCoffeeChat ?? null,
+          messageToTeam: formData.messageToTeam ?? null,
         });
         alert('지원서가 제출되었습니다.');
-        router.replace(`/jobs/${postingId}/success`);
+        router.replace(`/jobs/talentPool/success`);
       } catch (error) {
         console.error(error);
         alert('에러가 발생했습니다. 잠시 후 다시 시도해주세요.');
@@ -146,14 +135,6 @@ export const ApplicationForm = ({
         setIsLoading(false);
       }
     }
-  };
-
-  const handleCareerChange = (type: 'NEW' | 'CAREER') => {
-    setFormData((prev) => ({
-      ...prev,
-      careerType: type,
-      careerYears: type === 'NEW' ? undefined : prev.careerYears,
-    }));
   };
 
   const handleAllAgree = () => {
@@ -179,11 +160,8 @@ export const ApplicationForm = ({
       {/* Header Section */}
       <section className="flex flex-col gap-8">
         <h1 className="text-[38px] font-600 leading-[140%] -tracking-[0.95px] text-basic-black">
-          지원서 작성하기
+          인재풀 등록
         </h1>
-        <p className="text-24 font-500 leading-[140%] -tracking-[0.6px] text-basic-black">
-          {jobTitle}
-        </p>
       </section>
 
       {/* Form Section */}
@@ -215,73 +193,14 @@ export const ApplicationForm = ({
           error={errors.email}
         />
 
-        {/* Career */}
-        <div className="flex flex-col gap-12">
-          <label className="text-14 font-600 leading-[140%] -tracking-[0.35px] text-basic-black">
-            경력
-          </label>
-          <div className="flex flex-col gap-16">
-            <div className="flex min-h-[46.33px] items-center gap-24">
-              <div className="flex items-center gap-12">
-                <RadioOption
-                  label="경력"
-                  selected={formData.careerType === 'CAREER'}
-                  onClick={() => handleCareerChange('CAREER')}
-                />
-                {formData.careerType === 'CAREER' && (
-                  <div className="animate-fadeIn w-[72px]">
-                    <div
-                      className={`flex w-full items-center rounded-8 border px-12 py-8 focus-within:border-brand-primary-400 ${
-                        errors.careerYears
-                          ? 'border-basic-red-400'
-                          : 'border-basic-grey-200'
-                      }`}
-                    >
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                        value={
-                          formData.careerYears
-                            ? String(formData.careerYears)
-                            : ''
-                        }
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/[^0-9]/g, '');
-                          setFormData({
-                            ...formData,
-                            careerYears: val
-                              ? Number(val.slice(0, 2))
-                              : undefined,
-                          });
-                        }}
-                        className="w-full bg-transparent px-4 py-4 text-14 font-500 leading-[160%] text-basic-black placeholder:text-basic-grey-400 focus:outline-none"
-                      />
-                      <p className="-mx-20 text-14 font-500 leading-[160%] -tracking-[0.35px]">
-                        년
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <RadioOption
-                label="신입 (경력 없음)"
-                selected={formData.careerType === 'NEW'}
-                onClick={() => handleCareerChange('NEW')}
-              />
-            </div>
-          </div>
-          {errors.careerType && (
-            <p className="text-12 font-500 text-basic-red-400">
-              {errors.careerType}
-            </p>
-          )}
-          {errors.careerYears && (
-            <p className="text-12 font-500 text-basic-red-400">
-              {errors.careerYears}
-            </p>
-          )}
-        </div>
+        {/* Job Title */}
+        <InputField
+          label="직무"
+          value={formData.jobTitle || ''}
+          onChange={(val) => setFormData({ ...formData, jobTitle: val })}
+          placeholder="직무를 입력하세요."
+          error={errors.jobTitle}
+        />
 
         {/* Resume */}
         <FileInputField
@@ -302,7 +221,53 @@ export const ApplicationForm = ({
           error={errors.portfolioFile}
           accept=".pdf"
         />
+
+        {/* Wants Coffee Chat */}
+        <div className="flex flex-col gap-12">
+          <label className="text-14 font-600 leading-[140%] -tracking-[0.35px] text-basic-black">
+            커피챗을 희망하시나요?
+          </label>
+          <div className="flex flex-col gap-16">
+            <div className="flex min-h-[46.33px] items-center gap-24">
+              <RadioOption
+                label="네"
+                selected={formData.wantsCoffeeChat ?? false}
+                onClick={() =>
+                  setFormData({
+                    ...formData,
+                    wantsCoffeeChat: true,
+                  })
+                }
+              />
+              <RadioOption
+                label="아니오, 인재풀만 등록할게요"
+                selected={!formData.wantsCoffeeChat}
+                onClick={() =>
+                  setFormData({
+                    ...formData,
+                    wantsCoffeeChat: false,
+                  })
+                }
+              />
+            </div>
+          </div>
+          {errors.wantsCoffeeChat && (
+            <p className="text-12 font-500 text-basic-red-400">
+              {errors.wantsCoffeeChat}
+            </p>
+          )}
+        </div>
       </section>
+
+      {/* Message to Team */}
+      <InputField
+        label="핸디버스 팀에게 하고 싶은 말이 있으시다면, 자유롭게 적어주세요. (선택사항)"
+        value={formData.messageToTeam || ''}
+        onChange={(val) => setFormData({ ...formData, messageToTeam: val })}
+        placeholder="내용을 입력해 주세요."
+        error={errors.messageToTeam}
+        variant="textarea"
+      />
 
       {/* Agreement Section */}
       <section>
