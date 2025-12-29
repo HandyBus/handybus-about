@@ -33,21 +33,16 @@ const ContactForm = () => {
       return false;
     }
     setErrors({});
-    return true;
+    return result.data;
   };
 
   const handleSubmit = async () => {
-    if (validate()) {
+    const data = validate();
+
+    if (data) {
       setIsLoading(true);
       try {
-        await createContact({
-          name: formData.name!,
-          company: formData.company!,
-          phoneNumber: formData.phoneNumber!,
-          email: formData.email!,
-          title: formData.title!,
-          content: formData.content!,
-        });
+        await createContact(data);
         router.replace('/contact/success');
       } catch (error) {
         console.error(error);

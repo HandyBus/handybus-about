@@ -94,11 +94,12 @@ export const ApplicationForm = () => {
       return false;
     }
     setErrors({});
-    return true;
+    return result.data;
   };
 
   const handleSubmit = async () => {
-    if (validate()) {
+    const data = validate();
+    if (data) {
       setIsLoading(true);
       try {
         let resumeFileUrl = '';
@@ -113,20 +114,19 @@ export const ApplicationForm = () => {
 
         await createJobApplication({
           jobPostingId: null,
-          applicantName: formData.name!,
-          applicantPhoneNumber: formData.contact!,
-          applicantEmail: formData.email!,
+          applicantName: data.name,
+          applicantPhoneNumber: data.contact,
+          applicantEmail: data.email,
           applicantCareerYears: null,
           applicationType: 'TALENT_POOL',
-          customJobTitle: formData.jobTitle!,
+          customJobTitle: data.jobTitle,
           resumeFile: resumeFileUrl,
           portfolioFile: portfolioFileUrl,
-          personalInfoConsent: formData.agreeMandatory1!,
+          personalInfoConsent: data.agreeMandatory1,
           agreedAt: dayjs().toISOString(),
-          wantsCoffeeChat: formData.wantsCoffeeChat ?? null,
-          messageToTeam: formData.messageToTeam ?? null,
+          wantsCoffeeChat: data.wantsCoffeeChat ?? null,
+          messageToTeam: data.messageToTeam ?? null,
         });
-        alert('지원서가 제출되었습니다.');
         router.replace(`/jobs/talentPool/success`);
       } catch (error) {
         console.error(error);

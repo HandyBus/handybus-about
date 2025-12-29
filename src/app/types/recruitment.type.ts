@@ -48,19 +48,39 @@ export type JobPostingResponseModel = z.infer<
 >;
 
 export const CreateJobApplicationRequestSchema = z.object({
-  jobPostingId: z.string().nullable().describe("채용 공고 ID (JOB 타입일 경우 필수)"),
-  applicantName: z.string().describe("지원자 이름"),
-  applicantPhoneNumber: z.string().describe("지원자 전화번호"),
-  applicantEmail: z.string().describe("지원자 이메일"),
-  applicantCareerYears: z.number().nullable().describe("지원자 경력 연수"),
-  applicationType: z.enum(['JOB', 'TALENT_POOL']).describe("지원 유형"),
-  customJobTitle: z.string().nullable().describe("커스텀 직무명 (TALENT_POOL 타입일 경우 필수)"),
-  resumeFile: z.string().describe("이력서 파일 URL"),
-  portfolioFile: z.string().nullable().describe("포트폴리오 파일 URL"),
-  personalInfoConsent: z.boolean().describe("개인정보 동의 여부"),
-  agreedAt: z.string().nullable().describe("동의 일시 (ISO8601)"),
-  wantsCoffeeChat: z.boolean().nullable().describe("커피챗 희망 여부"),
-  messageToTeam: z.string().nullable().describe("팀에게 전하는 메시지"),
+  jobPostingId: z
+    .string()
+    .nullable()
+    .describe('채용 공고 ID (JOB 타입일 경우 필수)'),
+  applicantName: z.string().describe('지원자 이름'),
+  applicantPhoneNumber: z.string().describe('지원자 전화번호'),
+  applicantEmail: z.string().describe('지원자 이메일'),
+  applicantCareerYears: z.number().nullable().describe('지원자 경력 연수'),
+  applicationType: z.enum(['JOB', 'TALENT_POOL']).describe('지원 유형'),
+  customJobTitle: z
+    .string()
+    .nullable()
+    .describe('커스텀 직무명 (TALENT_POOL 타입일 경우 필수)'),
+  resumeFile: z.string().describe('이력서 파일 URL'),
+  portfolioFile: z
+    .string()
+    .optional()
+    .nullable()
+    .describe('포트폴리오 파일 URL'),
+  personalInfoConsent: z.boolean().describe('개인정보 동의 여부'),
+  agreedAt: z.string().optional().nullable().describe('동의 일시 (ISO8601)'),
+  wantsCoffeeChat: z
+    .boolean()
+    .optional()
+    .nullable()
+    .describe('커피챗 희망 여부'),
+  messageToTeam: z
+    .string()
+    .optional()
+    .nullable()
+    .describe('팀에게 전하는 메시지'),
 });
 
-export type CreateJobApplicationRequest = z.infer<typeof CreateJobApplicationRequestSchema>;
+export type CreateJobApplicationRequest = z.infer<
+  typeof CreateJobApplicationRequestSchema
+>;
