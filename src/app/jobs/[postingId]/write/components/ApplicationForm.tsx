@@ -134,7 +134,7 @@ export const ApplicationForm = ({
           messageToTeam: null,
         });
         alert('지원서가 제출되었습니다.');
-        router.back();
+        router.replace(`/jobs/${postingId}/success`);
       } catch (error) {
         console.error(error);
         alert('에러가 발생했습니다. 잠시 후 다시 시도해주세요.');
