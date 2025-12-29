@@ -1,3 +1,5 @@
+'use client';
+
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import Spinner from '/public/icons/spinner.svg';
 
@@ -25,11 +27,7 @@ export const Button = ({
       {...props}
     >
       {children}
-      {isLoading && (
-        <span className="ml-[8px] animate-spin">
-          <Spinner />
-        </span>
-      )}
+      {isLoading && <Spinner className="ml-[8px] animate-spin" />}
     </button>
   );
 };
