@@ -67,3 +67,10 @@ html::-webkit-scrollbar {
     font-size: 0.7em;
   }
 }
+
+@layer components {
+  /* 컨테이너 패딩 */
+  .container-padding {
+    @apply mx-16 tablet:mx-[30px] desktop:mx-40;
+  }
+}

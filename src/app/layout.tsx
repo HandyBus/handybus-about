@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { DESCRIPTION, KEYWORDS, OG_IMAGE_URL, URL } from '@/constants/metadata';
 import { TITLE } from '@/constants/metadata';
 import Script from 'next/script';
+import Header from '@/components/header/Header';
 
 const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
 const FAVICON_PROD = '/favicons/favicon.ico';
@@ -18,7 +19,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    template: TITLE,
+    template: `%s | ${TITLE}`,
     default: TITLE,
   },
   description: DESCRIPTION,
@@ -93,7 +94,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
       </head>
-      <body className="bg-basic-white">{children}</body>
+      <body className="flex flex-col items-center bg-basic-white">
+        <Header />
+        <main className="w-full max-w-1280">{children}</main>
+      </body>
     </html>
   );
 }
