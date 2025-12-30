@@ -1,6 +1,6 @@
 'use client';
 
-import LogoIcon from 'public/icons/logo.svg';
+import LogoIcon from 'public/icons/LogoLarge.svg';
 import Link from 'next/link';
 import ArrowOutwardIcon from 'public/icons/arrow-outward-black.svg';
 import MenuIcon from 'public/icons/menu.svg';
@@ -34,21 +34,31 @@ const Header = () => {
   return (
     <>
       <header className="sticky top-0 z-50 flex h-56 w-full max-w-1280 items-center justify-between bg-basic-white pl-20 pr-8 tablet:px-40">
-        {!isMenuOpen && <LogoIcon />}
+        <Link href="/">
+          <LogoIcon />
+        </Link>
         <div className="hidden gap-16 whitespace-nowrap text-14 font-600 leading-[140%] tablet:flex">
-          <Link href="/">회사 소개</Link>
-          <Link href="/culture">팀 문화</Link>
-          <Link href="/jobs">채용 공고</Link>
+          <Link href="/" className="px-12 py-[6px]">
+            회사 소개
+          </Link>
+          <Link href="/culture" className="px-12 py-[6px]">
+            팀 문화
+          </Link>
+          <Link href="/jobs" className="px-12 py-[6px]">
+            채용 공고
+          </Link>
           <Link
             href="https://handybus.medium.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center"
+            className="flex items-center px-12 py-[6px]"
           >
             블로그
             <ArrowOutwardIcon />
           </Link>
-          <Link href="/contact">협업 문의</Link>
+          <Link href="/contact" className="px-12 py-[6px]">
+            협업 문의
+          </Link>
         </div>
         <button
           className="transition-opacity duration-300 tablet:hidden"

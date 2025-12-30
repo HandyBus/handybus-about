@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import TopImage from './images/top-image.png';
-import Culture1Image from './images/2x-culture-card1.png';
-import Culture2Image from './images/2x-culture-card2.png';
-import Culture3Image from './images/2x-culture-card3.png';
-import Culture4Image from './images/2x-culture-card4.png';
-import Culture1ImageSmall from './images/2x-culture-card-small1.png';
-import Culture2ImageSmall from './images/2x-culture-card-small2.png';
-import Culture3ImageSmall from './images/2x-culture-card-small3.png';
-import Culture4ImageSmall from './images/2x-culture-card-small4.png';
+import TopImage from './images/2x-top-image.png';
+import Culture1Image from './images/4x-culture-card1.png';
+import Culture2Image from './images/4x-culture-card2.png';
+import Culture3Image from './images/4x-culture-card3.png';
+import Culture4Image from './images/4x-culture-card4.png';
+import Culture1ImageSmall from './images/4x-culture-card-small1.png';
+import Culture2ImageSmall from './images/4x-culture-card-small2.png';
+import Culture3ImageSmall from './images/4x-culture-card-small3.png';
+import Culture4ImageSmall from './images/4x-culture-card-small4.png';
 import { Metadata } from 'next';
 import Footer from '@/components/footer/Footer';
 
@@ -41,6 +41,8 @@ const Page = () => {
             alt="상단 이미지"
             fill
             className="object-cover"
+            placeholder="blur"
+            priority={true}
           />
         </figure>
         <h1 className="absolute bottom-180 left-1/2 -translate-x-1/2 text-center text-[34px] font-600 leading-[140%] text-basic-white">
@@ -70,6 +72,7 @@ const Page = () => {
                 alt={`팀문화 이미지 ${index + 1}`}
                 fill
                 className="rounded-16 object-cover"
+                placeholder="blur"
               />
             </figure>
           ))}
@@ -82,6 +85,7 @@ const Page = () => {
                 alt={`팀문화 이미지 ${index + 1}`}
                 fill
                 className="rounded-16 object-cover"
+                placeholder="blur"
               />
             </figure>
           ))}

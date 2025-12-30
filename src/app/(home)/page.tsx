@@ -1,17 +1,17 @@
 import Image, { StaticImageData } from 'next/image';
 import TopImage from './images/top-image.png';
-import AudienceImage from './images/audience-image.png';
-import Card1Image from './images/card1.png';
-import Card2Image from './images/card2.png';
-import Card3Image from './images/card3.png';
-import Card4Image from './images/card4.png';
-import Metric1Image from './images/metric1.png';
-import Metric2Image from './images/metric2.png';
-import Metric3Image from './images/metric3.png';
-import Metric4Image from './images/metric4.png';
-import Service1Image from './images/service1.png';
-import Service2Image from './images/service2.png';
-import Service3Image from './images/service3.png';
+import AudienceImage from './images/4x-audience-image.png';
+import Card1Image from './images/4x-card1.png';
+import Card2Image from './images/4x-card2.png';
+import Card3Image from './images/4x-card3.png';
+import Card4Image from './images/4x-card4.png';
+import Metric1Image from './images/4x-metric1.png';
+import Metric2Image from './images/4x-metric2.png';
+import Metric3Image from './images/4x-metric3.png';
+import Metric4Image from './images/4x-metric4.png';
+import Service1Image from './images/4x-service1.png';
+import Service2Image from './images/4x-service2.png';
+import Service3Image from './images/4x-service3.png';
 import PartnerTadaImage from './images/brand-tada.png';
 import PartnerKlookImage from './images/brand-klook.png';
 import PartnerKoreaUnivImage from './images/brand-korea-univ.png';
@@ -168,6 +168,8 @@ const Page = () => {
             alt="상단 이미지"
             fill
             className="object-cover"
+            placeholder="blur"
+            priority={true}
           />
         </figure>
         <div className="absolute bottom-[151px] left-[18px] flex flex-col gap-16 text-basic-white tablet:bottom-[137px] tablet:left-[30px] desktop:left-40">
@@ -206,6 +208,7 @@ const Page = () => {
             alt="관객 이미지"
             fill
             className="rounded-16 object-cover"
+            placeholder="blur"
           />
         </figure>
       </section>
@@ -219,6 +222,7 @@ const Page = () => {
               alt={`그림 ${index + 1}`}
               fill
               className="rounded-16 object-cover"
+              placeholder="blur"
             />
           </figure>
         ))}
@@ -248,6 +252,7 @@ const Page = () => {
                 alt={`성과 이미지 ${index + 1}`}
                 fill
                 className="rounded-16 object-cover"
+                placeholder="blur"
               />
             </figure>
           ))}
@@ -279,6 +284,7 @@ const Page = () => {
                   alt={item.title}
                   fill
                   className="rounded-t-16 object-cover"
+                  placeholder="blur"
                 />
               </figure>
               <div className="flex flex-col gap-[11px] rounded-b-16 bg-basic-grey-50 px-24 pb-24 pt-20">
@@ -338,6 +344,7 @@ const Page = () => {
                     alt={`파트너 이미지 ${index + 1}`}
                     fill
                     className="object-contain"
+                    placeholder="blur"
                   />
                 </div>
               </figure>
@@ -354,6 +361,7 @@ const Page = () => {
             alt="하단 이미지"
             fill
             className="object-cover"
+            placeholder="blur"
           />
         </figure>
         <section className="absolute inset-0 flex flex-col items-center justify-center gap-16 pb-[66.5px] pt-[67.5px] tablet:pb-[90px] tablet:pt-[91px] desktop:gap-24 desktop:bg-transparent desktop:py-0">
