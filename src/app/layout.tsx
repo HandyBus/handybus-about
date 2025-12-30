@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { DESCRIPTION, KEYWORDS, OG_IMAGE_URL, URL } from '@/constants/metadata';
 import { TITLE } from '@/constants/metadata';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import Header from '@/components/header/Header';
 
 const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
@@ -97,6 +98,7 @@ export default function RootLayout({
       <body className="flex flex-col items-center bg-basic-white">
         <Header />
         <main className="w-full max-w-1280">{children}</main>
+        <Analytics />
       </body>
     </html>
   );
