@@ -266,9 +266,9 @@ export const ApplicationForm = () => {
             terms={MANDATORY_AGREEMENT_TERMS}
           />
         </section>
-        {errors.agreeMandatory1 && (
+        {errors.personalInfoConsent && (
           <p className="mt-12 text-12 font-500 text-basic-red-400">
-            {errors.agreeMandatory1}
+            {errors.personalInfoConsent}
           </p>
         )}
       </section>
