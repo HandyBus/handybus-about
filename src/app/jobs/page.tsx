@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import TopImage from './images/jobs-top-image.png';
+import TopImage from './images/2x-jobs-top-image.png';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { getJobPostings } from '../services/recruitment.service';
@@ -30,6 +30,8 @@ const Page = async () => {
             alt="상단 이미지"
             fill
             className="object-cover object-right"
+            placeholder="blur"
+            priority={true}
           />
         </figure>
         <h1 className="absolute left-1/2 top-[190px] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[34px] font-600 leading-[140%] text-basic-white">
