@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import { getJobPostings } from '../services/recruitment.service';
 import { getDDay, formatDate } from './jobs.utils';
 import { JOB_CATEGORY_LABEL, CAREER_TYPE_LABEL } from './jobs.const';
-import Footer from '@/components/footer/Footer';
 import { JobPostingResponseModel } from '../types/recruitment.type';
+import Footer from '@/components/footer/Footer';
 
 export const metadata: Metadata = {
   title: '채용 공고',
@@ -32,7 +32,7 @@ const Page = async () => {
             className="object-cover object-right"
           />
         </figure>
-        <h1 className="absolute left-1/2 top-[190px] -translate-x-1/2 -translate-y-1/2 text-center text-[34px] font-600 leading-[140%] text-basic-white">
+        <h1 className="absolute left-1/2 top-[190px] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-center text-[34px] font-600 leading-[140%] text-basic-white">
           핸디버스의 여정을
           <br />
           함께 할 동료를 찾습니다.
@@ -58,11 +58,11 @@ const Page = async () => {
                     {CAREER_TYPE_LABEL[job.careerType]}
                   </p>
                 </div>
-                <div className="text-right ">
+                <div className="flex flex-col justify-center text-right">
                   <p className="text-24 font-600 leading-[140%]">
                     {getDDay(job.closeAt)}
                   </p>
-                  <p className="text-14 font-500 leading-[140%] text-basic-grey-700">
+                  <p className="whitespace-nowrap text-14 font-500 leading-[140%] text-basic-grey-700">
                     {job.closeAt ? `~ ${formatDate(job.closeAt)}` : '상시 채용'}
                   </p>
                 </div>
@@ -85,9 +85,12 @@ const Page = async () => {
           </p>
         </section>
         <section className="flex justify-center">
-          <button className="rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white">
+          <Link
+            href="/jobs/talentPool"
+            className="rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white"
+          >
             등록하기
-          </button>
+          </Link>
         </section>
       </section>
 

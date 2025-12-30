@@ -1,6 +1,7 @@
 import z from 'zod';
 import {
   CareerType,
+  CreateJobApplicationRequest,
   JobCategory,
   JobPostingResponseModelSchema,
 } from '../types/recruitment.type';
@@ -40,4 +41,19 @@ export const getJobPostings = async (
     },
   );
   return res.jobPostings;
+};
+
+export const createJobApplication = async (
+  application: CreateJobApplicationRequest,
+) => {
+  const res = await instance.post(
+    '/v1/recruitment/job-applications',
+    application,
+    {
+      shape: {
+        jobApplicationId: z.string(),
+      },
+    },
+  );
+  return res.jobApplicationId;
 };

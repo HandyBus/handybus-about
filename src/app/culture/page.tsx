@@ -91,7 +91,7 @@ const Page = () => {
       {/* 회사 복지 소개 */}
       <section className="container-padding mb-64 grid grid-cols-1 gap-16 tablet:mb-80 desktop:mb-120 desktop:grid-cols-2 desktop:gap-24">
         <section className="flex flex-col items-start gap-16 tablet:items-center desktop:items-start">
-          <h2 className="text-24 font-600 leading-[140%]">
+          <h2 className="break-keep text-24 font-600 leading-[140%]">
             일과 삶의 균형, 핸디버스가 보장합니다
           </h2>
           <p className="text-16 font-500 leading-[140%] text-basic-grey-700">
