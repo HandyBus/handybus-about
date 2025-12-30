@@ -361,10 +361,15 @@ const Page = () => {
             팬덤 이동의 시작과 끝, 핸디버스
           </h2>
           <div className="flex gap-16">
-            <button className="flex items-center justify-center gap-[2px] rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white">
+            <a
+              href="https://d3qgbeccnzlvr3.cloudfront.net/resumes/files/86327d32-83d9-4d37-8f4f-446cf1a38901.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-[2px] rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white"
+            >
               회사소개서
               <DownloadIcon />
-            </button>
+            </a>
           </div>
         </section>
       </section>
