@@ -5,6 +5,10 @@ import Card1Image from './images/4x-card1.png';
 import Card2Image from './images/4x-card2.png';
 import Card3Image from './images/4x-card3.png';
 import Card4Image from './images/4x-card4.png';
+import CardSmall1Image from './images/2x-card-small1.png';
+import CardSmall2Image from './images/2x-card-small2.png';
+import CardSmall3Image from './images/2x-card-small3.png';
+import CardSmall4Image from './images/2x-card-small4.png';
 import Metric1Image from './images/4x-metric1.png';
 import Metric2Image from './images/4x-metric2.png';
 import Metric3Image from './images/4x-metric3.png';
@@ -37,6 +41,13 @@ const CARD_IMAGES: StaticImageData[] = [
   Card2Image,
   Card3Image,
   Card4Image,
+];
+
+const CARD_IMAGES_MOBILE: StaticImageData[] = [
+  CardSmall1Image,
+  CardSmall2Image,
+  CardSmall3Image,
+  CardSmall4Image,
 ];
 
 const METRICS_IMAGES: StaticImageData[] = [
@@ -214,9 +225,23 @@ const Page = () => {
       </section>
 
       {/* 그림 */}
-      <section className="container-padding flex flex-col gap-24 tablet:grid tablet:grid-cols-2 desktop:flex desktop:flex-row">
+      <section className="container-padding gap-24 tablet:grid tablet:grid-cols-2 desktop:flex desktop:flex-row hidden">
         {CARD_IMAGES.map((card, index) => (
           <figure key={index} className="relative aspect-[282/376] w-full">
+            <Image
+              src={card}
+              alt={`그림 ${index + 1}`}
+              fill
+              className="rounded-16 object-cover"
+              placeholder="blur"
+            />
+          </figure>
+        ))}
+      </section>
+
+      <section className="container-padding flex flex-col gap-24 tablet:hidden">
+        {CARD_IMAGES_MOBILE.map((card, index) => (
+          <figure key={index} className="relative aspect-[1/1] w-full">
             <Image
               src={card}
               alt={`그림 ${index + 1}`}
@@ -261,7 +286,7 @@ const Page = () => {
           <h2 className="break-keep text-24 font-600 leading-[160%] tablet:leading-[140%]">
             팬덤 이동 시장에서 빠르게 성장하고 있습니다
           </h2>
-          <p className="text-20 font-500 leading-[140%] text-basic-grey-700 tablet:text-16">
+          <p className="text-16 font-500 leading-[140%] text-basic-grey-700">
             핸디버스는 지난 기간동안 축적된 수만 건의 팬덤 이동 데이터를
             기반으로 국내 팬덤 셔틀 시장을 선도하고 있습니다. 저희는 단순 예약
             및 운행을 넘어, 팬들의 거주지 분포, 행사 성격 등을 다각도로 분석하여
@@ -365,7 +390,7 @@ const Page = () => {
           />
         </figure>
         <section className="absolute inset-0 flex flex-col items-center justify-center gap-16 pb-[66.5px] pt-[67.5px] tablet:pb-[90px] tablet:pt-[91px] desktop:gap-24 desktop:bg-transparent desktop:py-0">
-          <h2 className="text-[36px] font-600 leading-[140%] text-basic-white tablet:text-[38px]">
+          <h2 className="break-keep text-center text-[36px] font-600 leading-[140%] text-basic-white tablet:text-[38px]">
             팬덤 이동의 시작과 끝, 핸디버스
           </h2>
           <div className="flex gap-16">
