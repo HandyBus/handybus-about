@@ -1,6 +1,6 @@
 'use client';
 
-import LogoIcon from 'public/icons/LogoLarge.svg';
+import LogoIcon from 'public/icons/logo-v3.svg';
 import Link from 'next/link';
 import ArrowOutwardIcon from 'public/icons/arrow-outward-black.svg';
 import MenuIcon from 'public/icons/menu.svg';
