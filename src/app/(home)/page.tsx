@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import TopImage from './images/top-image.png';
+import TopImage from './images/home-top-image-original.png';
 import AudienceImage from './images/4x-audience-image.png';
 import Card1Image from './images/4x-card1.png';
 import Card2Image from './images/4x-card2.png';
@@ -181,6 +181,7 @@ const Page = () => {
             className="object-cover"
             placeholder="blur"
             priority={true}
+            quality={100}
           />
         </figure>
         <div className="absolute bottom-[151px] left-[18px] flex flex-col gap-16 text-basic-white tablet:bottom-[137px] tablet:left-[30px] desktop:left-40">
@@ -225,7 +226,7 @@ const Page = () => {
       </section>
 
       {/* 그림 */}
-      <section className="container-padding gap-24 tablet:grid tablet:grid-cols-2 desktop:flex desktop:flex-row hidden">
+      <section className="container-padding hidden gap-24 tablet:grid tablet:grid-cols-2 desktop:flex desktop:flex-row">
         {CARD_IMAGES.map((card, index) => (
           <figure key={index} className="relative aspect-[282/376] w-full">
             <Image
