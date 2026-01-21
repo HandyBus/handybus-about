@@ -90,7 +90,7 @@ const Page = async () => {
         <section className="flex justify-center">
           <Link
             href="/jobs/talentPool"
-            className="rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white"
+            className="flex items-center justify-center gap-[2px] rounded-8 bg-brand-primary-400 px-16 py-12 text-basic-white text-16 font-600 leading-[160%]"
           >
             등록하기
           </Link>
